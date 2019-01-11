@@ -31,7 +31,7 @@ def RowStitchFunc (str, path, ScanPath):
     # initialize OpenCV's image sticher object and then perform the image
     # stitching
     print("[INFO] stitching images...")
-    stitcher = cv2.createStitcherScans() if imutils.is_cv3() else cv2.Stitcher_create()
+    stitcher = cv2.createStitcherScans(True)
     
     (status, stitched) = stitcher.stitch(images)
     

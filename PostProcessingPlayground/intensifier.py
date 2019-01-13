@@ -21,9 +21,12 @@ args = vars(ap.parse_args())
 
 # load the image, convert it to grayscale, and blur it
 image = cv2.imread(args["image"])
+#image = imutils.resize(image, width=600)
+cv2.imshow("Original Image",image)
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 blurred = cv2.GaussianBlur(gray, (11, 11), 0)
+cv2.imshow("Grayed_and_Blurred",blurred)
 
 # Find Luminance
 #test = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
@@ -35,12 +38,13 @@ blurred = cv2.GaussianBlur(gray, (11, 11), 0)
 # blurred image
 #thresh = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)[1]
 thresh = cv2.threshold(blurred, 100, 200, cv2.THRESH_BINARY)[1]
+cv2.imshow("Thresh",thresh)
 
 # perform a series of erosions and dilations to remove
 # any small blobs of noise from the thresholded image
 thresh = cv2.erode(thresh, None, iterations=2)
 thresh = cv2.dilate(thresh, None, iterations=4)
-
+cv2.imshow("Erode_and_Dilate",thresh)
 # perform a connected component analysis on the thresholded
 # image, then initialize a mask to store only the "large"
 # components
@@ -62,7 +66,7 @@ for label in np.unique(labels):
 
 	# if the number of pixels in the component is sufficiently
 	# large, then add it to our mask of "large blobs"
-	if numPixels > 300:
+	if numPixels > 100:
 		mask = cv2.add(mask, labelMask)
 # find the contours in the mask, then sort them from left to
 # right
@@ -88,9 +92,9 @@ with open('holes.csv', mode='a') as csvfile:
 			test = cv2.cvtColor(image3, cv2.COLOR_BGR2LAB)
 			l_channel,a_channel,b_channel = cv2.split(test)
 			print(np.mean(l_channel))
-			cv2.imshow("L_Channel"+str(i)+str(c),l_channel)
+			#cv2.imshow("L_Channel"+str(i)+str(c),l_channel)
 		except ValueError:
 			print("Hey lookatme")         
 # show the output image
-cv2.imshow("Image3", image)
+cv2.imshow("Processed Image", image)
 cv2.waitKey(0)

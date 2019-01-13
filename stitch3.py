@@ -26,8 +26,9 @@ def RowStitchFunc (str, path, ScanPath):
     	image = cv2.imread(imagePath)
     	image=cv2.transpose(image)
     	image=cv2.flip(image,flipCode=1)
+    	image=imutils.resize(image, width=400)
     	images.append(image)
-    
+
     # initialize OpenCV's image sticher object and then perform the image
     # stitching
     print("[INFO] stitching images...")

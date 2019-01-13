@@ -28,7 +28,7 @@ from utils import visualization_utils as vis_util
 
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'inference_graph'
-IMAGE_NAME = "Stitched.png"
+IMAGE_NAME = "Stitched.jpg"
 
 # Path to frozen detection graph .pb file, which contains the model that is used for object detection.
 PATH_TO_CKPT = 'C:/ObjectDetection/models/research/object_detection/inference_graph/frozen_inference_graph.pb'
@@ -136,10 +136,8 @@ for x in range(0,height,M):
         vis_util.visualize_boxes_and_labels_on_image_array(
             tile,
             np.squeeze(boxes),
-            #np.squeeze(classes).astype(np.int32),
-            #np.squeeze(scores),
-            None,
-            None,
+            np.squeeze(classes).astype(np.int32),
+            np.squeeze(scores),
             category_index,
             use_normalized_coordinates=True,
             line_thickness=2,

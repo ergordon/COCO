@@ -15,7 +15,7 @@ Created on Mon Oct 22 16:01:46 2018
 import cv2
 import numpy
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 ""
 while(True):
     ret, frame = cap.read()    

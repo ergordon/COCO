@@ -30,7 +30,7 @@ def PlotHolesFunc (path):
     BBA = []
     numPix = []
     Density = []
-    conv = 275
+    conv = 125 # Pixles per mm
     
     with open(os.path.join(path ,'holes.csv'), 'r') as f:
         reader = csv.DictReader(f)
@@ -51,8 +51,8 @@ def PlotHolesFunc (path):
             except AttributeError:
                 print("No Entry")
     
-    r = 0.01#0.03
-    AbsoluteXX, AbsoluteYY = filter(AbsoluteX, AbsoluteY,r)
+    #r = 0.01#0.03
+    #AbsoluteXX, AbsoluteYY = filter(AbsoluteX, AbsoluteY,r)
 
  
     

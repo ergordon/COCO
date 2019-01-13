@@ -104,7 +104,7 @@ def lightIntenseFunc (str, path):
                 
             xRel = int(str[str.find('X')+1:str.find('Y')])
             yRel = int(str[str.find('Y')+1:str.find('P')])
-            conv = 275 # Conversion 175px per 1mm     
+            conv = 125 # Conversion 175px per 1mm     
             #NOTE: Due to camera rotation, the cY referes to placement of X and cX referes to placement of Y
             filewriter.writerow([str, int(cX)/conv, int(cY)/conv, int(radius)/conv, xRel - cY/conv, yRel + cX/conv, int(lMean), int(numPixels), int(w), int(h), int(w*h)])
     

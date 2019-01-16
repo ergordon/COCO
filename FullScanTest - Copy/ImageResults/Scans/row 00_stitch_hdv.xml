@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root>
+	<imageset
+		url="row 00_stitch_files/{l}/{c}_{r}.png"
+		levels="15"
+		width="4778"
+		height="9223"
+		projection="perspective"
+		alphaBlend="1"
+		maxZoom="2.000000"
+		tileWidth="254"
+		tileHeight="254"
+		tileOverlap="1"
+	/>
+</root>

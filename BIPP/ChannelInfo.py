@@ -5,7 +5,7 @@ Created on Fri Dec 28 18:47:55 2018
 @author: Emilio Gordon
 """
 
-def ChannelInfoFunc (PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY,im_width,im_height,xmin,ymin,xmax,ymax):
+def ChannelInfoFunc (PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY,im_width,im_height,xmin,ymin,xmax,ymax, convX, convY):
     # import the necessary packages
     from imutils import contours
     from skimage import measure
@@ -28,8 +28,17 @@ def ChannelInfoFunc (PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY,im_w
         
         # Look at just the channel
         image2 = image[absCoordX+int(top):absCoordX+int(bottom), int(left)+absCoordY:int(right)+absCoordY]
-        #cv2.imshow("image2", image2)
         
+        try:
+            test = cv2.cvtColor(image2, cv2.COLOR_BGR2LAB)
+            l_channel,a_channel,b_channel = cv2.split(test)
+            lMean = np.mean(l_channel)
+            #print(lMean)
+            #cv2.imshow("channel", image2)
+            #cv2.waitKey(0)
+        except ValueError:
+            pass
+
         # Look at subImage
         #image3 = image[absCoordX:absCoordX+im_height, absCoordY:absCoordY+im_width]
         
@@ -41,10 +50,9 @@ def ChannelInfoFunc (PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY,im_w
         # Enclosing Circle
         cX = absCoordX+top+(h/2)
         cY = absCoordY+left+(w/2)
-        radius = h//2
         
         
-        wrtr.writerow([subImage,class_name,absCoordX,absCoordY,xmin,ymin,xmax,ymax, cX, cY])
+        wrtr.writerow([subImage,class_name,absCoordX,absCoordY,xmin,ymin,xmax,ymax, cY, cX, convY*cY, convX*cX, lMean, h*convX, w*convY])
         csvfile.flush()
     '''
         for (i, c) in enumerate(cnts):

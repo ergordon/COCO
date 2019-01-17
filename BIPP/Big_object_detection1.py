@@ -90,6 +90,15 @@ num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 image = cv2.imread(PATH_TO_IMAGE)
 height, width, channels = image.shape
 
+## Array Width and Height in mm
+arrayWidth = 70
+arrayHeight = 34
+
+convX = arrayWidth/height
+convY = arrayHeight/width
+
+print(convX, convY)
+
 ## Make the subdivisions
 maxImgWidth = 850
 maxImgHeight = 500
@@ -114,7 +123,7 @@ print("Each sub-image will be "+str(M)+"px by "+str(N)+" px \n")
 
 with open(os.path.join(os.getcwd(),'SubImages.csv'),'w') as csvfile:
     wrtr = csv.writer(csvfile, delimiter=',', quotechar='"')
-    wrtr.writerow(["SubImage Number","Class Name","RelativeOriginX2Absolute","RelativeOriginY2Absolute","Ymin","Xmin","Ymax","Xmax","cX","cY"])
+    wrtr.writerow(["SubImage Number","Class Name","RelativeOriginX2Absolute","RelativeOriginY2Absolute","Ymin","Xmin","Ymax","Xmax","pxcX","pxcY","cmcX","cmcY", "luminance", "width", "height"])
     csvfile.flush() # whenever you want, and/or
 
 tiles = []
@@ -155,7 +164,7 @@ for x in range(0,height,M):
         for c in range(0, len(classes)):
             if scores[c] > threshold:
                 class_name = category_index[classes[c]]['name']
-                ChannelInfoFunc (PATH_TO_IMAGE,"subImage_"+str(len(tiles)),str(class_name),int(x),int(y),N,M,boxes[c,0], boxes[c,1], boxes[c,2], boxes[c,3])
+                ChannelInfoFunc (PATH_TO_IMAGE,"subImage_"+str(len(tiles)),str(class_name),int(x),int(y),N,M,boxes[c,0], boxes[c,1], boxes[c,2], boxes[c,3], convX, convY)
 
         print("Image Processing Time Elapsed Time: "+ str(time.time() - PIC_TIME) + " sec \n" )
 

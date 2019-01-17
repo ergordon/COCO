@@ -29,13 +29,13 @@ def TakeImage(z,xxx,yyy,path):
     pathTemp = path + "/ImageResults/Row"+str(int(yyy[z]))
     print("TakeImage "+pathTemp)
     if ( z < 10 ):
-        cv2.imwrite(os.path.join(pathTemp ,"captureX"+str(int(xxx[z]))+"Y"+str(int(yyy[z]))+"P000"+str(z)+".jpg"), frame)
+        cv2.imwrite(os.path.join(pathTemp ,"captureP000"+str(z)+".jpg"), frame)
     elif (10 <= z <= 99):
-        cv2.imwrite(os.path.join(pathTemp ,"captureX"+str(int(xxx[z]))+"Y"+str(int(yyy[z]))+"P00"+str(z)+".jpg"), frame)
+        cv2.imwrite(os.path.join(pathTemp ,"captureP00"+str(z)+".jpg"), frame)
     elif (100 <= z <= 999):
-        cv2.imwrite(os.path.join(pathTemp ,"captureX"+str(int(xxx[z]))+"Y"+str(int(yyy[z]))+"P0"+str(z)+".jpg"), frame)
+        cv2.imwrite(os.path.join(pathTemp ,"captureP0"+str(z)+".jpg"), frame)
     else:
-        cv2.imwrite(os.path.join(pathTemp ,"captureX"+str(int(xxx[z]))+"Y"+str(int(yyy[z]))+"P"+str(z)+".jpg"), frame)
+        cv2.imwrite(os.path.join(pathTemp ,"captureP"+str(z)+".jpg"), frame)
         
     
 filename = input("Enter Desired File Name: ")

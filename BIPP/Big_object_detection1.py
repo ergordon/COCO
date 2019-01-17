@@ -97,6 +97,7 @@ arrayHeight = 34
 convX = arrayWidth/height
 convY = arrayHeight/width
 
+
 print(convX, convY)
 
 ## Make the subdivisions
@@ -124,7 +125,7 @@ print("Each sub-image will be "+str(M)+"px by "+str(N)+" px \n")
 with open(os.path.join(os.getcwd(),'SubImages.csv'),'w') as csvfile:
     wrtr = csv.writer(csvfile, delimiter=',', quotechar='"')
     wrtr.writerow(["SubImage Number","Class Name","RelativeOriginX2Absolute","RelativeOriginY2Absolute","Ymin","Xmin","Ymax","Xmax","pxcX","pxcY","cmcX","cmcY", "luminance", "width", "height"])
-    csvfile.flush() # whenever you want, and/or
+    csvfile.flush()
 
 tiles = []
 for x in range(0,height,M):

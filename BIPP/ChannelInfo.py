@@ -33,9 +33,10 @@ def ChannelInfoFunc (PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY,im_w
             test = cv2.cvtColor(image2, cv2.COLOR_BGR2LAB)
             l_channel,a_channel,b_channel = cv2.split(test)
             lMean = np.mean(l_channel)
-            #print(lMean)
-            #cv2.imshow("channel", image2)
-            #cv2.waitKey(0)
+            print(lMean)
+            cv2.imshow("channel", image2)
+            cv2.waitKey(0)
+            cv2.imwrite('channel'+str(lMean)+'.jpg', image2)
         except ValueError:
             pass
 
@@ -52,7 +53,7 @@ def ChannelInfoFunc (PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY,im_w
         cY = absCoordY+left+(w/2)
         
         
-        wrtr.writerow([subImage,class_name,absCoordX,absCoordY,xmin,ymin,xmax,ymax, cY, cX, convY*cY, convX*cX, lMean, h*convX, w*convY])
+        wrtr.writerow([subImage,class_name,absCoordX,absCoordY,xmin,ymin,xmax,ymax, cX, cY, convX*cX, convY*cY, lMean, w*convY, h*convX])
         csvfile.flush()
     '''
         for (i, c) in enumerate(cnts):

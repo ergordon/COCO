@@ -42,6 +42,10 @@ PATH_TO_IMAGE = 'C:/Users/EPLab/Desktop/COCO/BIPP/'+IMAGE_NAME
 PATH_TO_OUTPUT = os.getcwd() + "/Detections"
 try:  
     os.mkdir(PATH_TO_OUTPUT)
+    os.mkdir(os.getcwd() + "/Channels")
+    os.mkdir(os.getcwd() + "/Channels/Light")
+    os.mkdir(os.getcwd() + "/Channels/Grey")
+    os.mkdir(os.getcwd() + "/Channels/Dark")
 except OSError:  
     print ("Creation of the directory %s failed" % PATH_TO_OUTPUT)
 else:  
@@ -165,7 +169,7 @@ for x in range(0,height,M):
         for c in range(0, len(classes)):
             if scores[c] > threshold:
                 class_name = category_index[classes[c]]['name']
-                ChannelInfoFunc (PATH_TO_IMAGE,"subImage_"+str(len(tiles)),str(class_name),int(x),int(y),N,M,boxes[c,0], boxes[c,1], boxes[c,2], boxes[c,3], convX, convY)
+                ChannelInfoFunc (PATH_TO_IMAGE,"subImage_"+str(len(tiles)),str(class_name),int(x),int(y),N,M,boxes[c,0], boxes[c,1], boxes[c,2], boxes[c,3], convX, convY, c)
 
         print("Image Processing Time Elapsed Time: "+ str(time.time() - PIC_TIME) + " sec \n" )
 

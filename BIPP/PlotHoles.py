@@ -37,12 +37,12 @@ def PlotHolesFunc (path):
     Height = []
     Area = []
     HtW = []
-    with open(os.path.join(path ,'channels.csv'), 'r') as f:
+    with open(os.path.join(path ,'Channels.csv'), 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                AbsoluteX.append(float(row["cmcX"]))
-                AbsoluteY.append(float(row["cmcY"]))
+                AbsoluteY.append(float(row["cmcX"]))
+                AbsoluteX.append(float(row["cmcY"]))
                 if(float(row["luminance"]) >= 100):
                     Luminance.append(100)
                 elif(100 > float(row["luminance"]) >= 65):
@@ -91,7 +91,7 @@ def PlotHolesFunc (path):
     plt.ylabel("Channel Y-Location [mm]")
     plt.colorbar()
     plt.show(block=False)
-
+    
     f4 = plt.figure(4)
     x = AbsoluteX
     y = AbsoluteY

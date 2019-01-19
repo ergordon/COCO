@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stitchProject version="2.0" cameraMotion="rigidScale" projection="perspective">
+  <viewRotation roll="0.49520811079060223" angleUnit="degrees" />
+  <vignetteCorrection redFactor="0" greenFactor="0" blueFactor="0" globalIntensityScale="1" />
+  <structuredPanoramaSettings startingCorner="TopLeft" primaryDirection="Horizontal" primaryDirectionImageCount="19" movementMethod="Serpentine" angularRange="Non360" horizontalOverlap="40" verticalOverlap="99" seamOverlap="80" featureMatchingSearchRadius="100" />
+  <sourceImages>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 00.jpg">
+      <cameraPose rotation="0.016386769035095328" angleUnit="degrees" scale="1.0033289421787928" translationX="-0.10296779321810472" translationY="-0.00490594026197861" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 02.jpg">
+      <cameraPose rotation="-0.12420880301929865" angleUnit="degrees" scale="0.99927911950391524" translationX="-0.052876376380724573" translationY="0.000292074331756334" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 04.jpg">
+      <cameraPose rotation="0" angleUnit="degrees" scale="1" translationX="0" translationY="0" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 06.jpg">
+      <cameraPose rotation="0.038142724364927078" angleUnit="degrees" scale="1.0007444059254906" translationX="0.051333565781109862" translationY="-0.00096868987383152624" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 08.jpg">
+      <cameraPose rotation="-0.25426065037967538" angleUnit="degrees" scale="1.0002264208561238" translationX="0.10478241185704742" translationY="-0.00062889396102265658" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 10.jpg">
+      <cameraPose rotation="-0.046908908688491992" angleUnit="degrees" scale="1.000333378995454" translationX="0.15742707548636736" translationY="-0.00087401016954370431" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 12.jpg">
+      <cameraPose rotation="-0.29902372867583066" angleUnit="degrees" scale="1.0001673756395713" translationX="0.2099463337332941" translationY="-0.0017491866563733287" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 14.jpg">
+      <cameraPose rotation="-0.28544677658567486" angleUnit="degrees" scale="1.0003526790284982" translationX="0.2636007944479361" translationY="-0.00092705879451866931" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 16.jpg">
+      <cameraPose rotation="-0.30285239758103677" angleUnit="degrees" scale="1.0008765386062564" translationX="0.31747969266080378" translationY="-7.8924539514795E-07" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 18.jpg">
+      <cameraPose rotation="-0.33128450841415985" angleUnit="degrees" scale="1.0010044131281788" translationX="0.37033237434818644" translationY="0.00017807816871933876" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 20.jpg">
+      <cameraPose rotation="-0.33253575361664961" angleUnit="degrees" scale="1.001780889508062" translationX="0.42372682523558053" translationY="0.00072022456664199742" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 22.jpg">
+      <cameraPose rotation="-0.36409347131782166" angleUnit="degrees" scale="1.0018018309303796" translationX="0.47714427333503789" translationY="0.00016070022878031474" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 24.jpg">
+      <cameraPose rotation="-0.39073687868288376" angleUnit="degrees" scale="1.0012879526521363" translationX="0.5318631142392598" translationY="-0.00031731133220430554" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 26.jpg">
+      <cameraPose rotation="-0.41360816954918933" angleUnit="degrees" scale="1.0011379723928924" translationX="0.58435557106974645" translationY="-0.00026307485063947408" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 28.jpg">
+      <cameraPose rotation="-0.12778844181807147" angleUnit="degrees" scale="1.001904903902139" translationX="0.63866326227913472" translationY="-0.00066090010401675622" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 30.jpg">
+      <cameraPose rotation="-0.47286820796368212" angleUnit="degrees" scale="1.0022363322392536" translationX="0.69146283631259209" translationY="-0.00064786680603813" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 32.jpg">
+      <cameraPose rotation="-0.58614384314158385" angleUnit="degrees" scale="1.0030055554110433" translationX="0.74486366633975365" translationY="0.00038243843551330524" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 34.jpg">
+      <cameraPose rotation="-0.32316865316966253" angleUnit="degrees" scale="1.0027297558153712" translationX="0.79981185847976366" translationY="0.00069898135221764242" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanPostClean\ImageResults\ScansICE\row 36.jpg">
+      <cameraPose rotation="-0.4896726412414758" angleUnit="degrees" scale="1.0039547223479797" translationX="0.85181958872220664" translationY="-0.00047365324487480147" tolerance="4" />
+    </sourceImage>
+  </sourceImages>
+</stitchProject>

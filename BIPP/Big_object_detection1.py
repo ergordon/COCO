@@ -126,7 +126,7 @@ print("\nThe input image is "+str(height)+"px by "+str(width)+" px")
 print("This image will be divided into %s by %s sub-images for a total of %s images." % (divideHeight, divideWidth, divideHeight*divideWidth))  
 print("Each sub-image will be "+str(M)+"px by "+str(N)+" px \n")
 
-with open(os.path.join(os.getcwd(),'SubImages.csv'),'w') as csvfile:
+with open(os.path.join(os.getcwd(),'Channels.csv'),'w') as csvfile:
     wrtr = csv.writer(csvfile, delimiter=',', quotechar='"')
     wrtr.writerow(["SubImage Number","Class Name","RelativeOriginX2Absolute","RelativeOriginY2Absolute","Ymin","Xmin","Ymax","Xmax","pxcX","pxcY","cmcX","cmcY", "luminance", "width", "height"])
     csvfile.flush()

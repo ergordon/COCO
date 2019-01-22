@@ -37,12 +37,14 @@ def PlotHolesFunc (path):
     Height = []
     Area = []
     HtW = []
+    z=0
     with open(os.path.join(path ,'Channels.csv'), 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                AbsoluteY.append(float(row["cmcX"]))
-                AbsoluteX.append(float(row["cmcY"]))
+                z = z+1
+                AbsoluteX.append(float(row["cmcX"]))
+                AbsoluteY.append(float(row["cmcY"]))
                 if(float(row["luminance"]) >= 100):
                     Luminance.append(100)
                 elif(100 > float(row["luminance"]) >= 65):
@@ -61,12 +63,14 @@ def PlotHolesFunc (path):
     #r = 0.01#0.03
     #AbsoluteXX, AbsoluteYY = filter(AbsoluteX, AbsoluteY,r)
 
-    print(statistics.mean(Luminance))
-    print(statistics.stdev(Luminance))
-    print(statistics.mean(Area))
-    print(statistics.stdev(Area))
-    print(statistics.mean(HtW))
-    print(statistics.stdev(HtW))
+    print("Mean Luminance:  " + str(statistics.mean(Luminance)))
+    print("STDe Luminance:  " + str(statistics.stdev(Luminance)))
+    print("Mean Area :  " + str(statistics.mean(Area)))
+    print("STDe Area:  " + str(statistics.stdev(Area)))
+    print("Mean Height-to-Width:  " + str(statistics.mean(HtW)))
+    print("STDe Height-to-Width:  " + str(statistics.stdev(HtW)))
+    
+    print(str(z) + " Channels Detected")
     
     f1 = plt.figure(1)
     #plt.scatter(AbsoluteX, AbsoluteY, s=1)
@@ -97,20 +101,20 @@ def PlotHolesFunc (path):
     y = AbsoluteY
     z = LuminanceExact
     df = pd.DataFrame({"x" : x, "y" : y, "z":z})
-    subDivide = 5
+    subDivide = 10
     binsx = numpy.arange(0,36,subDivide)
     binsy = numpy.arange(0,72,subDivide)
     res = df.groupby([pd.cut(df.y, binsy),pd.cut(df.x,binsx)])['z'].mean().unstack()
     plt.imshow(res, cmap='winter', 
                extent=[binsx.min(), binsx.max(),binsy.min(),binsy.max()],
                origin='lower')
-
+    '''
     # Loop over data dimensions and create text annotations.
     for i in range(1,35,subDivide):
         for j in range(1,70,subDivide):
             plt.text(i+(subDivide/2.5), j+(subDivide/2.5), str(int(round(res[i][j]))),
                            ha="center", va="center", color="w")
-            
+    '''        
     plt.colorbar()
     plt.xticks(binsx)
     plt.yticks(binsy)

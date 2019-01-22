@@ -58,5 +58,5 @@ def ChannelInfoFunc (PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY,im_w
         cY = absCoordY+left+(w/2)
         
         
-        wrtr.writerow([subImage,class_name+str(z),absCoordX,absCoordY,xmin,ymin,xmax,ymax, cX, cY, convX*cX, convY*cY, lMean, w*convY, h*convX])
+        wrtr.writerow([subImage,class_name+str(z),absCoordX,absCoordY,xmin,ymin,xmax,ymax, cY, cX, convY*cY, convX*cX, lMean, w*convY, h*convX])
         csvfile.flush()

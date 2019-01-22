@@ -28,7 +28,7 @@ from utils import visualization_utils as vis_util
 
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'inference_graph'
-IMAGE_NAME = "Stitched.jpg"
+IMAGE_NAME = "PreClean_Stitched.jpg"
 
 # Path to frozen detection graph .pb file, which contains the model that is used for object detection.
 PATH_TO_CKPT = 'C:/ObjectDetection/models/research/object_detection/inference_graph/frozen_inference_graph.pb'

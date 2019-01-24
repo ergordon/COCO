@@ -4,7 +4,6 @@ Created on Mon Oct 22 15:53:58 2018
 
 @author: Emilio Gordon
 """
-
 import serial
 from serial import Serial
 import time
@@ -12,6 +11,9 @@ import cv2
 import numpy as np
 import os
 from stitch3 import RowStitchFunc
+from ChannelDetection import ChannelDetectionFunc
+from PlotHoles import PlotHolesFunc
+from ComparePlots import ComparePlotsFunc
 import csv
 
 def removeComment(string):
@@ -44,9 +46,12 @@ length = input("Enter Array Length [cm] (X-axis): ")
 width = input("Enter Array Width [cm] (Y-axis): ")
 print("Your G-Code will output as " + str(filename) + ".nc for your " +str(length)+"x"+str(width)+" cm array.")
 
+#Begin Timer
+START_TIME = time.time()
+    
 ## Make new Directories
-
-path = "C:/Users/EPLab/Desktop/COCO/"+str(filename)
+raw_path = "C:/Users/EPLab/Desktop/COCO/"
+path = raw_path+str(filename)
 try:  
     os.mkdir(path)
 except OSError:  
@@ -178,13 +183,29 @@ for line in f:
 #np.savetxt(os.path.join(path+"/" ,"YIter.csv"), c, delimiter=",")
  
 # Wait here until printing is finished to close serial port and file.
-proceed = input("  Press <Y> to move forward with Stitching")
+print("\n \n Use Microsoft Image Composite Editor to create a stitched image.\n Name the stitched image "+str(filename)+"_Stitched.jpg and place it into the project folder created at the starte of running COCO")
 
+time.sleep(10) # Time in seconds.
 # Close file and serial port
 f.close()
 s.close()
 cap.release()
 
+proceed = input("Press Enter when finished.")
+
+ChannelDetectionFunc(path)
+
+proceed = int(input("Press <<1>> Visualize Channels"))
+if (proceed==1):
+    PlotHolesFunc (path)
+elif (proceed == 2):
+    testCompare = str(input("Input the test name you would like to compare data for."))
+    ComparePlotsFunc (raw_path,filename,testCompare)
+else:
+    print("Goodbye")
+
+print("Total Elapsed Time For COCO: "+ str(time.time() - START_TIME) + " sec" )
+'''
 pathScan = path+"/ImageResults/Scans"
 try:  
     os.mkdir(pathScan)
@@ -199,3 +220,5 @@ for i in range(0,yy,1):
     RowStitchFunc("Row"+str(i*yStep)+".png",pathTemp,pathScan)
 
 RowStitchFunc("CompleteStitch.png",pathScan,path)
+'''
+

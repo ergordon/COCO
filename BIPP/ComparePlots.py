@@ -95,8 +95,8 @@ with open(os.path.join(path ,args["DataB"]), 'r') as f:
 ## Print Stats
 print("\n")
 print(args["DataA"])
-print("Mean Luminance:  " + str(round(statistics.mean(A_Luminance),2)))
-print("STDe Luminance:  " + str(round(statistics.stdev(A_Luminance),2)))
+print("Mean Luminance:  " + str(round(statistics.mean(A_LuminanceExact),2)))
+print("STDe Luminance:  " + str(round(statistics.stdev(A_LuminanceExact),2)))
 print("Mean Area :  " + str(round(statistics.mean(A_Area),2)))
 print("STDe Area:  " + str(round(statistics.stdev(A_Area),2)))
 print("Mean Height-to-Width:  " + str(round(statistics.mean(A_HtW),2)))
@@ -105,8 +105,8 @@ print(str(A_z) + " Channels Detected \n \n")
 
 
 print(args["DataB"])
-print("Mean Luminance:  " + str(round(statistics.mean(B_Luminance),2)))
-print("STDe Luminance:  " + str(round(statistics.stdev(B_Luminance),2)))
+print("Mean Luminance:  " + str(round(statistics.mean(B_LuminanceExact),2)))
+print("STDe Luminance:  " + str(round(statistics.stdev(B_LuminanceExact),2)))
 print("Mean Area :  " + str(round(statistics.mean(B_Area),2)))
 print("STDe Area:  " + str(round(statistics.stdev(B_Area),2)))
 print("Mean Height-to-Width:  " + str(round(statistics.mean(B_HtW),2)))

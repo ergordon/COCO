@@ -10,10 +10,6 @@ import time
 import cv2
 import numpy as np
 import os
-from stitch3 import RowStitchFunc
-from ChannelDetection import ChannelDetectionFunc
-from PlotHoles import PlotHolesFunc
-from ComparePlots import ComparePlotsFunc
 import csv
 
 def removeComment(string):
@@ -183,7 +179,7 @@ for line in f:
 #np.savetxt(os.path.join(path+"/" ,"YIter.csv"), c, delimiter=",")
  
 # Wait here until printing is finished to close serial port and file.
-print("\n \n Use Microsoft Image Composite Editor to create a stitched image.\n Name the stitched image "+str(filename)+"_Stitched.jpg and place it into the project folder created at the starte of running COCO")
+print("\n \n Use Microsoft Image Composite Editor to create a stitched image.\n Name the stitched image Stitched.jpg and place it into the project folder created at the starte of running COCO")
 
 time.sleep(10) # Time in seconds.
 # Close file and serial port
@@ -193,32 +189,8 @@ cap.release()
 
 proceed = input("Press Enter when finished.")
 
-ChannelDetectionFunc(path)
-
-proceed = int(input("Press <<1>> Visualize Channels"))
-if (proceed==1):
-    PlotHolesFunc (path)
-elif (proceed == 2):
-    testCompare = str(input("Input the test name you would like to compare data for."))
-    ComparePlotsFunc (raw_path,filename,testCompare)
-else:
-    print("Goodbye")
-
 print("Total Elapsed Time For COCO: "+ str(time.time() - START_TIME) + " sec" )
-'''
-pathScan = path+"/ImageResults/Scans"
-try:  
-    os.mkdir(pathScan)
-except OSError:  
-    print ("Creation of the directory %s failed" % pathScan)
-else:  
-    print ("Successfully created the directory %s" % pathScan)
+print("Test "+str(filename)+" Scanned Succesfully. "+str(length)+"x"+str(width)+" Array")
+print("Perform the following task to continue: \n    1. Activate the tensorflow enviroment \n    2. Run ChannelDetection.py \n    3. Activate CNC enviroment \n    4. Run PlotHoles.py or ComparePlots.py")
 
-for i in range(0,yy,1):
-    pathTemp = path + "/ImageResults/Row"+str(i*yStep)
-    print(pathTemp)
-    RowStitchFunc("Row"+str(i*yStep)+".png",pathTemp,pathScan)
-
-RowStitchFunc("CompleteStitch.png",pathScan,path)
-'''
 

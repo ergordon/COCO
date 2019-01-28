@@ -69,8 +69,23 @@ def PlotHolesFunc (path):
     print("STDe Area:  " + str(statistics.stdev(Area)))
     print("Mean Height-to-Width:  " + str(statistics.mean(HtW)))
     print("STDe Height-to-Width:  " + str(statistics.stdev(HtW)))
-    
+    print("Mean Width:  " + str(statistics.mean(Width)))
+    print("Mean Height:  " + str(statistics.mean(Height)))
     print(str(z) + " Channels Detected")
+    
+    file = open(os.path.join(path ,'Test_Stats.txt'),'w') 
+ 
+    file.write("Mean Luminance:  " + str(statistics.mean(Luminance))+"\n")
+    file.write("STDe Luminance:  " + str(statistics.stdev(Luminance))+"\n")
+    file.write("Mean Area :  " + str(statistics.mean(Area))+"\n")
+    file.write("STDe Area:  " + str(statistics.stdev(Area))+"\n")
+    file.write("Mean Height-to-Width:  " + str(statistics.mean(HtW))+"\n")
+    file.write("STDe Height-to-Width:  " + str(statistics.stdev(HtW))+"\n")
+    file.write("Mean Width:  " + str(statistics.mean(Width))+"\n")
+    file.write("Mean Height:  " + str(statistics.mean(Height))+"\n")
+    file.write(str(z) + " Channels Detected")
+     
+    file.close() 
     
     f1 = plt.figure(1)
     #plt.scatter(AbsoluteX, AbsoluteY, s=1)

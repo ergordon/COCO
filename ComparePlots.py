@@ -34,7 +34,7 @@ def ComparePlotsFunc (path, pathA, pathB):
     A_Area = []
     A_HtW = []
     A_z=0
-    with open(os.path.join(path+pathA ,'Channels.csv'), 'r') as f:
+    with open(os.path.join(path+pathA+'/','Channels.csv'), 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             try:
@@ -65,7 +65,7 @@ def ComparePlotsFunc (path, pathA, pathB):
     B_Area = []
     B_HtW = []
     B_z=0
-    with open(os.path.join(path+pathB ,'Channels.csv'), 'r') as f:
+    with open(os.path.join(path+pathB+'/','Channels.csv'), 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             try:
@@ -191,13 +191,13 @@ def ComparePlotsFunc (path, pathA, pathB):
     plt.imshow(res, cmap='winter', 
                extent=[binsx.min(), binsx.max(),binsy.min(),binsy.max()],
                origin='lower', vmin=50, vmax=150)
-    
+    '''
     # Loop over data dimensions and create text annotations.
     for i in range(1,35,subDivide):
         for j in range(1,70,subDivide):
             plt.text(i+(subDivide/2.5), j+(subDivide/2.5), str(int(round(res[i][j]))),
                            ha="center", va="center", color="w")
-       
+    '''
     plt.colorbar()
     plt.xticks(binsx)
     plt.yticks(binsy)
@@ -216,13 +216,13 @@ def ComparePlotsFunc (path, pathA, pathB):
     plt.imshow(res, cmap='winter', 
                extent=[binsx.min(), binsx.max(),binsy.min(),binsy.max()],
                origin='lower', vmin=50, vmax=150)
-    
+    '''
     # Loop over data dimensions and create text annotations.
     for i in range(1,35,subDivide):
         for j in range(1,70,subDivide):
             plt.text(i+(subDivide/2.5), j+(subDivide/2.5), str(int(round(res[i][j]))),
                            ha="center", va="center", color="w")
-    
+    '''
     plt.colorbar()
     plt.xticks(binsx)
     plt.yticks(binsy)

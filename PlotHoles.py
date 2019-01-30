@@ -63,8 +63,8 @@ def PlotHolesFunc (path):
     #r = 0.01#0.03
     #AbsoluteXX, AbsoluteYY = filter(AbsoluteX, AbsoluteY,r)
 
-    print("Mean Luminance:  " + str(statistics.mean(Luminance)))
-    print("STDe Luminance:  " + str(statistics.stdev(Luminance)))
+    print("Mean Luminance:  " + str(statistics.mean(LuminanceExact)))
+    print("STDe Luminance:  " + str(statistics.stdev(LuminanceExact)))
     print("Mean Area :  " + str(statistics.mean(Area)))
     print("STDe Area:  " + str(statistics.stdev(Area)))
     print("Mean Height-to-Width:  " + str(statistics.mean(HtW)))
@@ -72,18 +72,24 @@ def PlotHolesFunc (path):
     print("Mean Width:  " + str(statistics.mean(Width)))
     print("Mean Height:  " + str(statistics.mean(Height)))
     print(str(z) + " Channels Detected")
+    print(str((numpy.array(Luminance) == 100).sum())+" Light Channels")
+    print(str((numpy.array(Luminance) == 50).sum())+" Grey Channels")
+    print(str((numpy.array(Luminance) == 0).sum())+" Dark Channels")
     
     file = open(os.path.join(path ,'Test_Stats.txt'),'w') 
  
-    file.write("Mean Luminance:  " + str(statistics.mean(Luminance))+"\n")
-    file.write("STDe Luminance:  " + str(statistics.stdev(Luminance))+"\n")
+    file.write("Mean Luminance:  " + str(statistics.mean(LuminanceExact))+"\n")
+    file.write("STDe Luminance:  " + str(statistics.stdev(LuminanceExact))+"\n")
     file.write("Mean Area :  " + str(statistics.mean(Area))+"\n")
     file.write("STDe Area:  " + str(statistics.stdev(Area))+"\n")
     file.write("Mean Height-to-Width:  " + str(statistics.mean(HtW))+"\n")
     file.write("STDe Height-to-Width:  " + str(statistics.stdev(HtW))+"\n")
     file.write("Mean Width:  " + str(statistics.mean(Width))+"\n")
     file.write("Mean Height:  " + str(statistics.mean(Height))+"\n")
-    file.write(str(z) + " Channels Detected")
+    file.write(str(z) + " Channels Detected \n")
+    file.write(str((numpy.array(Luminance) == 100).sum())+" Light Channels \n")
+    file.write(str((numpy.array(Luminance) == 50).sum())+" Grey Channels \n")
+    file.write(str((numpy.array(Luminance) == 0).sum())+" Dark Channels \n")
      
     file.close() 
     
@@ -116,7 +122,7 @@ def PlotHolesFunc (path):
     y = AbsoluteY
     z = LuminanceExact
     df = pd.DataFrame({"x" : x, "y" : y, "z":z})
-    subDivide = 10
+    subDivide = 5
     binsx = numpy.arange(0,36,subDivide)
     binsy = numpy.arange(0,72,subDivide)
     res = df.groupby([pd.cut(df.y, binsy),pd.cut(df.x,binsx)])['z'].mean().unstack()

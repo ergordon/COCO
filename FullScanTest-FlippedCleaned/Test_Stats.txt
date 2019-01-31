@@ -1,0 +1,12 @@
+Mean Luminance:  106.43504066827875
+STDe Luminance:  24.84291039076746
+Mean Area :  0.02229505206010682
+STDe Area:  0.020745312453381237
+Mean Height-to-Width:  1.9044827900729855
+STDe Height-to-Width:  0.28723782166255274
+Mean Width:  0.10753725451546617
+Mean Height:  0.2027890904001182
+4549 Channels Detected 
+2727 Light Channels 
+1552 Grey Channels 
+270 Dark Channels 

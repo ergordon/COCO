@@ -11,6 +11,7 @@ import cv2
 import numpy as np
 import os
 import csv
+import sys
 
 def removeComment(string):
 	if (string.find(';')==-1):
@@ -25,7 +26,7 @@ def TakeImage(z,xxx,yyy,path):
     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
     #cv2.imshow('frame', rgb)
     pathTemp = path + "/ImageResults/Row"+str(int(yyy[z]))
-    print("TakeImage "+pathTemp)
+    #print("TakeImage "+pathTemp)
     if ( z < 10 ):
         cv2.imwrite(os.path.join(pathTemp ,"captureP000"+str(z)+".jpg"), frame)
     elif (10 <= z <= 99):
@@ -35,12 +36,34 @@ def TakeImage(z,xxx,yyy,path):
     else:
         cv2.imwrite(os.path.join(pathTemp ,"captureP"+str(z)+".jpg"), frame)
         
-    
-filename = input("Enter Desired File Name: ")
-print("Must be even: Ex. 7x3.4")
-length = input("Enter Array Length [cm] (X-axis): ")
-width = input("Enter Array Width [cm] (Y-axis): ")
-print("Your G-Code will output as " + str(filename) + ".nc for your " +str(length)+"x"+str(width)+" cm array.")
+# Print iterations progress
+def printProgressBar(iteration, total, prefix='', suffix='', decimals=1, bar_length=100):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        bar_length  - Optional  : character length of bar (Int)
+    """
+    str_format = "{0:." + str(decimals) + "f}"
+    percents = str_format.format(100 * (iteration / float(total)))
+    filled_length = int(round(bar_length * iteration / float(total)))
+    bar = '█' * filled_length + '-' * (bar_length - filled_length)
+
+    sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),
+
+    if iteration == total:
+        sys.stdout.write('\n')
+    sys.stdout.flush()
+        
+filename = input(" Enter Desired File Name: ")
+print(" Must be even: Ex. 7x3.4")
+length = input(" Enter Array Length [cm] (X-axis): ")
+width = input(" Enter Array Width [cm] (Y-axis): ")
+print("\n \n Your G-Code will output as " + str(filename) + ".nc for your " +str(length)+"x"+str(width)+" cm array.")
 
 #Begin Timer
 START_TIME = time.time()
@@ -48,20 +71,14 @@ START_TIME = time.time()
 ## Make new Directories
 raw_path = "C:/Users/EPLab/Desktop/COCO/"
 path = raw_path+str(filename)
+newPath = path + "/ImageResults"
+
 try:  
     os.mkdir(path)
-except OSError:  
-    print ("Creation of the directory %s failed" % path)
-else:  
-    print ("Successfully created the directory %s" % path)
-    
-newPath = path + "/ImageResults"
-try:  
     os.mkdir(newPath)
-except OSError:  
-    print ("Creation of the directory %s failed" % newPath)
-else:  
-    print ("Successfully created the directory %s" % newPath)
+except OSError:
+    print("")
+    
 
 ## Create G-Code File
 
@@ -97,9 +114,7 @@ for y in range(0, int(width), int(yStep)):
     try:  
         os.mkdir(PathTemp)
     except OSError:  
-        print ("Creation of the directory %s failed" % PathTemp)
-    else:  
-        print ("Successfully created the directory %s" % PathTemp)
+        continue
         
     yy = yy+1    
     
@@ -146,40 +161,45 @@ np.savetxt(os.path.join(path+"/" ,"YLocs.csv"), b, delimiter=",")
 
 # Open serial port
 s = serial.Serial('COM6',115200)
-print('Opening Serial Port')
+print('\n Opening Serial Port')
  
 # Open g-code file
 #f = open(str(filename)+".nc",'r');
 f = open(os.path.join(path+"/" ,str(filename)+".nc"),'r');
 
-print ('Opening gcode file')
+print ('\n Opening gcode file')
  
 # Wake up 
 time.sleep(2)   # Wait for CNC to initialize
 s.flushInput()  # Flush startup text in serial input
-print ('Sending gcode')
+print ('\n Sending gcode \n \n')
 
 #zz=[]
 z = 0
+maxZ = (width//yStep)*(length//xStep)
+printProgressBar(z, maxZ, prefix = 'Progress:', suffix = 'Complete', bar_length = 45)
 # Stream g-code
 for line in f:
     l = removeComment(line)
     l = l.strip() # Strip all EOL characters for streaming
     if  (l.isspace()==False and len(l)>0) :
-        print ('Sending: ' + l)
+        #print ('Sending: ' + l)
         if(l == "G04 P0.5"):
             TakeImage(z,xxx,yyy,path)
             z=z+1
+            printProgressBar(z, maxZ, prefix = 'Progress:', suffix = 'Complete', bar_length = 45)
             #zz.extend([zz])
     s.write(str.encode(l + '\n')) # Send g-code block
     grbl_out = s.readline() # Wait for response with carriage return
-    print (' : ' + str(grbl_out.strip()))
+    #print (' : ' + str(grbl_out.strip()))
     
 #c = np.asarray(zz)
 #np.savetxt(os.path.join(path+"/" ,"YIter.csv"), c, delimiter=",")
  
 # Wait here until printing is finished to close serial port and file.
-print("\n \n Use Microsoft Image Composite Editor to create a stitched image.\n Name the stitched image Stitched.jpg and place it into the project folder created at the starte of running COCO")
+print("\n \n Use Microsoft Image Composite Editor to create a stitched image.\n"+\
+      " Name the stitched image Stitched.jpg and place it into the project folder"+\
+      " created at the starte of running COCO")
 
 time.sleep(10) # Time in seconds.
 # Close file and serial port
@@ -187,10 +207,12 @@ f.close()
 s.close()
 cap.release()
 
-proceed = input("Press Enter when finished.")
+proceed = input(" Press Enter when finished.")
 
 print("Total Elapsed Time For COCO: "+ str(time.time() - START_TIME) + " sec" )
 print("Test "+str(filename)+" Scanned Succesfully. "+str(length)+"x"+str(width)+" Array")
-print("Perform the following task to continue: \n    1. Activate the tensorflow enviroment \n    2. Run ChannelDetection.py \n    3. Activate CNC enviroment \n    4. Run PlotHoles.py or ComparePlots.py")
-
-
+print("Perform the following task to continue: \n    "+\
+      "1. Activate the tensorflow enviroment \n    "+\
+      "2. Run ChannelDetection.py \n    "+\
+      "3. Activate CNC enviroment \n    "+\
+      "4. Run PlotHoles.py or ComparePlots.py")

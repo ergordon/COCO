@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stitchProject version="2.0" cameraMotion="rigidScale" projection="perspective">
+  <viewRotation roll="0.43420169952202575" angleUnit="degrees" />
+  <vignetteCorrection redFactor="0" greenFactor="0" blueFactor="0" globalIntensityScale="1" />
+  <structuredPanoramaSettings startingCorner="TopLeft" primaryDirection="Horizontal" primaryDirectionImageCount="18" movementMethod="Serpentine" angularRange="Non360" horizontalOverlap="70" verticalOverlap="99" seamOverlap="70" featureMatchingSearchRadius="100" />
+  <sourceImages>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\00.jpg">
+      <cameraPose rotation="-0.1149939299180338" angleUnit="degrees" scale="1.000301434129848" translationX="-0.10593217626842709" translationY="-0.0023382743759056347" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\02.jpg">
+      <cameraPose rotation="0.10169122953663799" angleUnit="degrees" scale="0.99956532329630532" translationX="-0.052545660712236389" translationY="-0.0018944533871506912" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\04.jpg">
+      <cameraPose rotation="0" angleUnit="degrees" scale="1" translationX="0" translationY="0" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\06.jpg">
+      <cameraPose rotation="-0.028726832834374303" angleUnit="degrees" scale="0.99965092640625774" translationX="0.053270767664196896" translationY="0.0010538656949448492" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\08.jpg">
+      <cameraPose rotation="-0.058484078361483394" angleUnit="degrees" scale="1.0003755767382265" translationX="0.1063639320856027" translationY="0.0017296685582771703" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\10.jpg">
+      <cameraPose rotation="-0.088583755613357573" angleUnit="degrees" scale="1.0007574215022168" translationX="0.15937910782964498" translationY="0.001428401209497469" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\12.jpg">
+      <cameraPose rotation="-0.0728359501884765" angleUnit="degrees" scale="1.0003003728681488" translationX="0.21290356160737919" translationY="0.0016405052838272239" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\14.jpg">
+      <cameraPose rotation="0.0953941926768665" angleUnit="degrees" scale="1.0003204594932786" translationX="0.26636830559512609" translationY="0.0017565740026891184" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\16.jpg">
+      <cameraPose rotation="-0.17582771800153829" angleUnit="degrees" scale="1.0008766860101559" translationX="0.32017515321179474" translationY="0.0022978619056910044" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\18.jpg">
+      <cameraPose rotation="-0.17878995027912539" angleUnit="degrees" scale="1.0009703200093396" translationX="0.37324608015841143" translationY="0.002645012675692449" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\20.jpg">
+      <cameraPose rotation="-0.23904616008116394" angleUnit="degrees" scale="1.0003286799181152" translationX="0.42660826469333646" translationY="0.0017650861060271548" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\22.jpg">
+      <cameraPose rotation="-0.23698747815684132" angleUnit="degrees" scale="0.99959297954902127" translationX="0.48043969880657034" translationY="0.0029821563146742707" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\24.jpg">
+      <cameraPose rotation="-0.27167365972517543" angleUnit="degrees" scale="1.0008037985852092" translationX="0.53502087714062163" translationY="0.0021199328652077611" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\26.jpg">
+      <cameraPose rotation="-0.26747412770889756" angleUnit="degrees" scale="1.0009457828792829" translationX="0.5886591010792408" translationY="0.0025395205650764171" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\28.jpg">
+      <cameraPose rotation="-0.24704203364329741" angleUnit="degrees" scale="1.0017006491276188" translationX="0.64193613456521559" translationY="0.0036465909218252714" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\30.jpg">
+      <cameraPose rotation="-0.29919286770851483" angleUnit="degrees" scale="1.0017109986644477" translationX="0.69588003245896657" translationY="0.0034807744242433564" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\32.jpg">
+      <cameraPose rotation="-0.47469713045515982" angleUnit="degrees" scale="1.0027637752554115" translationX="0.74973343063060027" translationY="0.0043035402211139421" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-FlippedCleaned\ImageResults\34.jpg">
+      <cameraPose rotation="-0.20589316876104363" angleUnit="degrees" scale="1.002673853174519" translationX="0.80405442423770246" translationY="0.0042954295631537813" tolerance="4" />
+    </sourceImage>
+  </sourceImages>
+</stitchProject>

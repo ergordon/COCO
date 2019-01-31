@@ -20,6 +20,8 @@ def PlotHolesFunc (path):
     import statistics
     import pandas as pd
     import seaborn as sns
+    import matplotlib.colors
+    
     
     newPath = path + "/ResultsFigures"
     try:  
@@ -95,7 +97,8 @@ def PlotHolesFunc (path):
     
     f1 = plt.figure(1)
     #plt.scatter(AbsoluteX, AbsoluteY, s=1)
-    plt.scatter(AbsoluteX, AbsoluteY, s=10, c=Luminance, cmap='winter')
+    trafficlight = matplotlib.colors.LinearSegmentedColormap.from_list("", ["red","orange","green"])
+    plt.scatter(AbsoluteX, AbsoluteY, s=10, c=Luminance, cmap=trafficlight)
     plt.colorbar()
     plt.xlabel("Channel X-Location [mm]")
     plt.ylabel("Channel Y-Location [mm]") 

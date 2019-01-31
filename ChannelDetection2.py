@@ -28,7 +28,7 @@ import sys
 import time
 import imutils
 import csv
-from ChannelInfo import ChannelInfoFunc
+from ChannelInfo2 import ChannelInfoFunc
 
 filename = input("Enter the test name you would like to detect channels for: \n ")
 print("Must be the same as the tested array length. (Note: Can be fixed later if input was incorrect)")

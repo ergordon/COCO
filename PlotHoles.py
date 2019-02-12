@@ -44,21 +44,23 @@ def PlotHolesFunc (path):
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                z = z+1
-                AbsoluteX.append(float(row["cmcX"]))
-                AbsoluteY.append(float(row["cmcY"]))
-                if(float(row["luminance"]) >= 100):
-                    Luminance.append(100)
-                elif(100 > float(row["luminance"]) >= 65):
-                    Luminance.append(50)
-                else:
-                    Luminance.append(0)
-                LuminanceExact.append(int(round(float(row["luminance"]))))
-                #Luminance.append(int(round(float(row["luminance"]),4)))
-                Width.append(float(row["width"]))
-                Height.append(float(row["height"]))
-                Area.append(float(row["width"])*float(row["height"]))
-                HtW.append(float(row["height"])/float(row["width"]))
+                if(float(row["cmcX"]) >= 00 and float(row["cmcX"]) <= 10):
+                    if(float(row["cmcY"]) >= 15 and float(row["cmcY"]) <= 25):
+                        z = z+1
+                        AbsoluteX.append(float(row["cmcX"]))
+                        AbsoluteY.append(float(row["cmcY"]))
+                        if(float(row["luminance"]) >= 100):
+                            Luminance.append(100)
+                        elif(100 > float(row["luminance"]) >= 65):
+                            Luminance.append(50)
+                        else:
+                            Luminance.append(0)
+                        LuminanceExact.append(int(round(float(row["luminance"]))))
+                        #Luminance.append(int(round(float(row["luminance"]),4)))
+                        Width.append(float(row["width"]))
+                        Height.append(float(row["height"]))
+                        Area.append(float(row["width"])*float(row["height"]))
+                        HtW.append(float(row["height"])/float(row["width"]))
             except AttributeError:
                 print("No Entry")
 
@@ -119,7 +121,8 @@ def PlotHolesFunc (path):
     plt.ylabel("Channel Y-Location [mm]")
     plt.colorbar()
     plt.show(block=False)
-    
+    plt.show()
+    '''
     f4 = plt.figure(4)
     x = AbsoluteX
     y = AbsoluteY
@@ -129,16 +132,16 @@ def PlotHolesFunc (path):
     binsx = numpy.arange(0,36,subDivide)
     binsy = numpy.arange(0,72,subDivide)
     res = df.groupby([pd.cut(df.y, binsy),pd.cut(df.x,binsx)])['z'].mean().unstack()
-    plt.imshow(res, cmap='winter', 
+    plt.imshow(res, cmap=trafficlight, 
                extent=[binsx.min(), binsx.max(),binsy.min(),binsy.max()],
                origin='lower')
-    '''
+    
     # Loop over data dimensions and create text annotations.
     for i in range(1,35,subDivide):
         for j in range(1,70,subDivide):
-            plt.text(i+(subDivide/2.5), j+(subDivide/2.5), str(int(round(res[i][j]))),
+            plt.text(i+(subDivide/2.25), j+(subDivide/2.25), str(int(round(res[i][j]))),
                            ha="center", va="center", color="w")
-    '''        
+      
     plt.colorbar()
     plt.xticks(binsx)
     plt.yticks(binsy)
@@ -213,10 +216,11 @@ def PlotHolesFunc (path):
     plt.xlabel("Channel X-Location [mm]")
     plt.ylabel("Channel Y-Location [mm]") 
     plt.show()
-    
+    '''
     f1.savefig(os.path.join(newPath, "ChannelLocationwLuminoisty.jpeg") , orientation='landscape', quality=95)
     f2.savefig(os.path.join(newPath, "LuminosityOverallDistribution.jpeg") , orientation='landscape', quality=95)
     f3.savefig(os.path.join(newPath, "ChannelDensity.jpeg") , orientation='landscape', quality=95)
+    '''
     f4.savefig(os.path.join(newPath, "LuminosityHeatMap.jpeg") , orientation='landscape', quality=95)
     f5.savefig(os.path.join(newPath, "AreaHistorgram.jpeg") , orientation='landscape', quality=95)
     f6.savefig(os.path.join(newPath, "HeighttoWidthHistogram.jpeg") , orientation='landscape', quality=95)
@@ -224,3 +228,4 @@ def PlotHolesFunc (path):
     f8.savefig(os.path.join(newPath, "HeighttoWidthHeatmap.jpeg") , orientation='landscape', quality=95)
     f9.savefig(os.path.join(newPath, "ChannelLocation.jpeg") , orientation='landscape', quality=95)
 #    f10.savefig(os.path.join(newPath, "LumFreq.jpeg") , orientation='landscape', quality=95)
+    '''

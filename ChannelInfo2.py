@@ -30,13 +30,22 @@ def ChannelInfoFunc (path,PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY
         wrtr = csv.writer(csvfile, delimiter=',', quotechar='"')
         csvfile.flush() # whenever you want, and/or
     
-        margin = 1
-        
+        marginW = 0#.2
+        marginH = 0#.1
         # Get Channel Coordinates in px
-        (left, right, top, bottom) = (ymin*(im_width+30), ymax*(im_width+30), xmin * (30+im_height), xmax * (30+im_height))
+        overlap = 40
+        (left, right, top, bottom) = (ymin*(im_width+overlap), ymax*(im_width+overlap), xmin * (overlap+im_height), xmax * (overlap+im_height))
+        
+        #Bounding Box Width and Height
+        w = right-left
+        h = bottom-top
+        
+        # Enclosing Circle
+        cX = absCoordX+top+(h/2)
+        cY = absCoordY+left+(w/2)
         
         # Look at just the channel
-        image2 = image[absCoordX+int(top)+margin:absCoordX+int(bottom)-margin, int(left)+absCoordY+margin:int(right)+absCoordY-margin]
+        image2 = image[absCoordX+int(top)+int(marginW*w):absCoordX+int(bottom)-int(marginW*w), int(left)+absCoordY+int(marginH*h):int(right)+absCoordY-int(marginH*h)]
         
         try:
             test = cv2.cvtColor(image2, cv2.COLOR_BGR2LAB)
@@ -54,15 +63,8 @@ def ChannelInfoFunc (path,PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY
         # Look at subImage
         #image3 = image[absCoordX:absCoordX+im_height, absCoordY:absCoordY+im_width]
         
-        
-        #Bounding Box Width and Height
-        w = right-left
-        h = bottom-top
-        
-        # Enclosing Circle
-        cX = absCoordX+top+(h/2)
-        cY = absCoordY+left+(w/2)
-        
-        
-        wrtr.writerow([subImage,class_name+str(z),absCoordX,absCoordY,xmin,ymin,xmax,ymax, cY, cX, convY*cY, convX*cX, lMean, w*convY, h*convX])
-        csvfile.flush()
+        if(xmax == 1 or ymax == 1):
+            pass
+        else:
+            wrtr.writerow([subImage,class_name+str(z),absCoordX,absCoordY,xmin,ymin,xmax,ymax, cY, cX, convY*cY, convX*cX, lMean, w*convY, h*convX])
+            csvfile.flush()

@@ -163,7 +163,7 @@ for x in range(0,height,M):
         
         print('Now processing subImage '+str(len(tiles)))
         
-        tile = image[x:x+M+30,y:y+N+30]
+        tile = image[x:x+M+40,y:y+N+40]
         tile_expanded = np.expand_dims(tile, axis=0)
                    
         # Perform the actual detection by running the model with the image as input

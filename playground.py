@@ -26,6 +26,9 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
     if iteration == total: 
         print()
 '''
+
+### Progress Bar Playground
+'''
 import sys
 
 # Print iterations progress
@@ -66,3 +69,64 @@ for i, item in enumerate(items):
     # Update Progress Bar
     
     printProgressBar(i, l, prefix = 'Progress:', suffix = 'Complete', bar_length = 45)
+'''
+
+from imutils import contours
+from skimage import measure
+import numpy as np
+import imutils
+import cv2
+import csv
+import os
+import imutils
+import csv
+
+image = cv2.imread('test5.jpg')
+image = imutils.resize(image, height= 400)
+cv2.imshow("image",image)
+
+test = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+#cv2.imshow("colorchange",test)
+test2=cv2.cvtColor(test, cv2.COLOR_BGR2YCrCb)
+#cv2.imshow("colorchange2",test2)
+img = cv2.blur(image,(3,3))
+test3=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+cv2.imshow("colorchange3",test3)
+'''
+#lower = np.array([17,26,30])  #-- Lower range --
+#upper = np.array([186,205,216])  #-- Upper range --
+lower = np.array([30,26,17])  #-- Lower range --
+upper = np.array([216,205,186])  #-- Upper range --
+mask = cv2.inRange(test, lower, upper)
+res = cv2.bitwise_and(test, test, mask= mask)  #-- Contains pixels having the gray color--
+cv2.imshow('Result',res)
+
+'''
+
+lower = np.array([70,100,108])  #-- Lower range --
+upper = np.array([210,236,239])  #-- Upper range --
+mask1 = cv2.inRange(test, lower, upper)
+res = cv2.bitwise_and(test, test, mask= mask1)  #-- Contains pixels having the gray color--
+cv2.imshow('Result1',res)
+temp=cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
+mask = cv2.inRange(temp, 50, 255)#was 150
+res = cv2.bitwise_and(image, image, mask= mask)  #-- Contains pixels having the gray color--
+cv2.imshow('Result2',res)
+
+
+#mask = cv2.inRange(test3, 50, 255)#was 150
+#res = cv2.bitwise_and(image, image, mask= mask)  #-- Contains pixels having the gray color--
+#cv2.imshow('Result2',res)
+
+'''
+lower = np.array([15,32,40])  #-- Lower range --
+upper = np.array([150,194,218])  #-- Upper range --
+mask = cv2.inRange(image, lower, upper)
+res = cv2.bitwise_and(image, image, mask= mask)  #-- Contains pixels having the gray color--
+cv2.imshow('Result3',res)
+'''
+
+avg_color_per_row = np.average(test, axis=0)
+avg_color = np.average(avg_color_per_row, axis=0)
+print(avg_color)
+cv2.waitKey(0)

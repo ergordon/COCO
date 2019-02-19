@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stitchProject version="2.0" cameraMotion="rigidScale" projection="perspective">
+  <viewRotation roll="0.13751155998335782" angleUnit="degrees" />
+  <vignetteCorrection redFactor="0" greenFactor="0" blueFactor="0" globalIntensityScale="1" />
+  <structuredPanoramaSettings startingCorner="TopLeft" primaryDirection="Horizontal" primaryDirectionImageCount="18" movementMethod="Serpentine" angularRange="Non360" horizontalOverlap="40" verticalOverlap="99" seamOverlap="70" featureMatchingSearchRadius="100" />
+  <sourceImages>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\00.jpg">
+      <cameraPose rotation="0.42781542598205341" angleUnit="degrees" scale="0.99919511191926857" translationX="-0.8525541163933622" translationY="-0.0061887149874848635" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\02.jpg">
+      <cameraPose rotation="0.22145266934544625" angleUnit="degrees" scale="0.99870469366217851" translationX="-0.80286228039882923" translationY="-0.004570064559245475" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\04.jpg">
+      <cameraPose rotation="0.38784025092603247" angleUnit="degrees" scale="0.9998053264602268" translationX="-0.74927987608932844" translationY="-0.0044654450661949854" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\06.jpg">
+      <cameraPose rotation="0.42848880891413688" angleUnit="degrees" scale="0.99957155584790236" translationX="-0.69671895896311242" translationY="-0.0036398054296457559" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\08.jpg">
+      <cameraPose rotation="0.32417395638513241" angleUnit="degrees" scale="0.99868942913537" translationX="-0.64355255136020328" translationY="-0.0041480369689494891" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\10.jpg">
+      <cameraPose rotation="0.31821568110271692" angleUnit="degrees" scale="0.99952543068911159" translationX="-0.590569025439935" translationY="-0.0045645938689879758" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\12.jpg">
+      <cameraPose rotation="0.11691950868759325" angleUnit="degrees" scale="1.0000666558344378" translationX="-0.53821671968638551" translationY="-0.0037440043354415205" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\14.jpg">
+      <cameraPose rotation="0.12996177198665934" angleUnit="degrees" scale="1.0003119135155052" translationX="-0.48457078564310629" translationY="-0.0033183365362260877" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\16.jpg">
+      <cameraPose rotation="0.29436759650505534" angleUnit="degrees" scale="1.0000628263302511" translationX="-0.43037630349251826" translationY="-0.0028804727187412035" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\18.jpg">
+      <cameraPose rotation="0.081077769241579362" angleUnit="degrees" scale="0.99994203645064128" translationX="-0.37695884224867354" translationY="-0.0017849220306924251" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\20.jpg">
+      <cameraPose rotation="0.26540437020111957" angleUnit="degrees" scale="1.0003014866316176" translationX="-0.32186531887124586" translationY="-0.0017412887036865714" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\22.jpg">
+      <cameraPose rotation="0.027234200375205932" angleUnit="degrees" scale="1.000033383805824" translationX="-0.26952917929433839" translationY="-0.0014762784321269637" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\24.jpg">
+      <cameraPose rotation="0.269863743612123" angleUnit="degrees" scale="1.0004231039369675" translationX="-0.21461537381053053" translationY="-0.0023190006023736881" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\26.jpg">
+      <cameraPose rotation="-0.0020439319284660993" angleUnit="degrees" scale="1.0002790403569062" translationX="-0.16173495454473127" translationY="-0.00080891772253944075" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\28.jpg">
+      <cameraPose rotation="0.29811939528183645" angleUnit="degrees" scale="1.0001942420919521" translationX="-0.1075701600684527" translationY="-0.00030933286321787636" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\30.jpg">
+      <cameraPose rotation="-0.050888930330568204" angleUnit="degrees" scale="1.0013329397491664" translationX="-0.054830913309670125" translationY="-0.00053343288437071026" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\32.jpg">
+      <cameraPose rotation="0" angleUnit="degrees" scale="1" translationX="0" translationY="0" tolerance="4" />
+    </sourceImage>
+    <sourceImage filePath="C:\Users\EPLab\Desktop\COCO\FullScanTest-CompressedCleaned\ImageResults\34.jpg">
+      <cameraPose rotation="-0.033960169994148005" angleUnit="degrees" scale="1.0003988553873668" translationX="0.053122875474052755" translationY="0.00017779658609142607" tolerance="4" />
+    </sourceImage>
+  </sourceImages>
+</stitchProject>

@@ -26,14 +26,15 @@ def ChannelInfoFunc (path,PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY
     
         
     image = cv2.imread(PATH_TO_IMAGE)
+    image = cv2.flip(image, 0)
     with open(os.path.join(path,'Channels.csv'),'a',newline='') as csvfile:
         wrtr = csv.writer(csvfile, delimiter=',', quotechar='"')
         csvfile.flush() # whenever you want, and/or
     
-        marginW = 0#.2
-        marginH = 0#.1
+        marginW = .2
+        marginH = .1
         # Get Channel Coordinates in px
-        overlap = 40
+        overlap = 0
         (left, right, top, bottom) = (ymin*(im_width+overlap), ymax*(im_width+overlap), xmin * (overlap+im_height), xmax * (overlap+im_height))
         
         #Bounding Box Width and Height
@@ -51,9 +52,9 @@ def ChannelInfoFunc (path,PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY
             test = cv2.cvtColor(image2, cv2.COLOR_BGR2LAB)
             l_channel,a_channel,b_channel = cv2.split(test)
             lMean = np.mean(l_channel)
-            if(lMean >= 100):
+            if(lMean >= 90):
                 cv2.imwrite(os.path.join(newPath+"/Light",subImage+'_channel_'+str(z)+'_LUM_'+str(int(round(lMean)))+'.jpg'), image2)
-            elif(100 > lMean >= 65):
+            elif(90 > lMean >= 45):
                 cv2.imwrite(os.path.join(newPath+"/Grey",subImage+'_channel_'+str(z)+'_LUM_'+str(int(round(lMean)))+'.jpg'), image2)
             else:
                 cv2.imwrite(os.path.join(newPath+"/Dark",subImage+'_channel_'+str(z)+'_LUM_'+str(int(round(lMean)))+'.jpg'), image2)

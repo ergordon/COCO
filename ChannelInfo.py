@@ -19,6 +19,7 @@ def ChannelInfoFunc (path,PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY
     
         
     image = cv2.imread(PATH_TO_IMAGE)
+    image = cv2.flip(image, 0)
     with open(os.path.join(path,'Channels.csv'),'a',newline='') as csvfile:
         wrtr = csv.writer(csvfile, delimiter=',', quotechar='"')
         csvfile.flush() # whenever you want, and/or

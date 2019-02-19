@@ -44,14 +44,14 @@ def PlotHolesFunc (path):
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                if(float(row["cmcX"]) >= 00 and float(row["cmcX"]) <= 10):
-                    if(float(row["cmcY"]) >= 15 and float(row["cmcY"]) <= 25):
+                if(float(row["cmcX"]) >= 0 and float(row["cmcX"]) <= 34):
+                    if(float(row["cmcY"]) >= 0 and float(row["cmcY"]) <= 70):
                         z = z+1
                         AbsoluteX.append(float(row["cmcX"]))
                         AbsoluteY.append(float(row["cmcY"]))
-                        if(float(row["luminance"]) >= 100):
+                        if(float(row["luminance"]) >= 90):
                             Luminance.append(100)
-                        elif(100 > float(row["luminance"]) >= 65):
+                        elif(90 > float(row["luminance"]) >= 45):# Was 100 to 65
                             Luminance.append(50)
                         else:
                             Luminance.append(0)

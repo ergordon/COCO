@@ -15,6 +15,7 @@ def ComparePlotsFunc (path, pathA, pathB):
     import pandas as pd
     import seaborn as sns
     import argparse
+    import matplotlib.colors
     
     
     newPath = path + pathA + "/Comparison_Figures_to_"+str(pathB)
@@ -109,6 +110,7 @@ def ComparePlotsFunc (path, pathA, pathB):
     print("STDe Height-to-Width:  " + str(round(statistics.stdev(B_HtW),2)))
     print(str(B_z) + " Channels Detected \n \n")
     
+    trafficlight = matplotlib.colors.LinearSegmentedColormap.from_list("", ["red","orange","green"])
     ###############################################################################
     ## Luminosity and Location
     fig = plt.figure("Location with Luminosity Comparison")
@@ -116,14 +118,14 @@ def ComparePlotsFunc (path, pathA, pathB):
     
     ax = fig.add_subplot(1, 2, 1)
     ax.set_title(pathA)
-    plt.scatter(A_AbsoluteX, A_AbsoluteY, s=10, c=A_Luminance, cmap='winter')
+    plt.scatter(A_AbsoluteX, A_AbsoluteY, s=10, c=A_Luminance, cmap=trafficlight)
     plt.colorbar()
     plt.xlabel("Channel X-Location [mm]")
     plt.ylabel("Channel Y-Location [mm]") 
     
     ax = fig.add_subplot(1, 2, 2)
     ax.set_title(pathB)
-    plt.scatter(B_AbsoluteX, B_AbsoluteY, s=10, c=B_Luminance, cmap='winter')
+    plt.scatter(B_AbsoluteX, B_AbsoluteY, s=10, c=B_Luminance, cmap=trafficlight)
     plt.colorbar()
     plt.xlabel("Channel X-Location [mm]")
     plt.ylabel("Channel Y-Location [mm]") 

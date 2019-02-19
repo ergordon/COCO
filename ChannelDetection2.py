@@ -115,6 +115,7 @@ num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 # Get the image and its dimensions
 print(PATH_TO_IMAGE)
 image = cv2.imread(PATH_TO_IMAGE)
+image = cv2.flip(image, 0) # Perform a verticle flip so that the original image and plots match.
 height, width, channels = image.shape
 
 ## Array Width and Height in mm
@@ -163,7 +164,7 @@ for x in range(0,height,M):
         
         print('Now processing subImage '+str(len(tiles)))
         
-        tile = image[x:x+M+40,y:y+N+40]
+        tile = image[x:x+M+0,y:y+N+0]
         tile_expanded = np.expand_dims(tile, axis=0)
                    
         # Perform the actual detection by running the model with the image as input

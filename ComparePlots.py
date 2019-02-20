@@ -42,9 +42,9 @@ def ComparePlotsFunc (path, pathA, pathB):
                 A_z = A_z+1
                 A_AbsoluteX.append(float(row["cmcX"]))
                 A_AbsoluteY.append(float(row["cmcY"]))
-                if(float(row["luminance"]) >= 100):
+                if(float(row["luminance"]) >= 90):
                     A_Luminance.append(100)
-                elif(100 > float(row["luminance"]) >= 65):
+                elif(90 > float(row["luminance"]) >= 45):
                     A_Luminance.append(50)
                 else:
                     A_Luminance.append(0)
@@ -73,9 +73,9 @@ def ComparePlotsFunc (path, pathA, pathB):
                 B_z = B_z+1
                 B_AbsoluteX.append(float(row["cmcX"]))
                 B_AbsoluteY.append(float(row["cmcY"]))
-                if(float(row["luminance"]) >= 100):
+                if(float(row["luminance"]) >= 90):
                     B_Luminance.append(100)
-                elif(100 > float(row["luminance"]) >= 65):
+                elif(90 > float(row["luminance"]) >= 45):
                     B_Luminance.append(50)
                 else:
                     B_Luminance.append(0)

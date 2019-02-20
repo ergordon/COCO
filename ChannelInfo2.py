@@ -63,9 +63,12 @@ def ChannelInfoFunc (path,PATH_TO_IMAGE,subImage,class_name, absCoordX,absCoordY
 
         # Look at subImage
         #image3 = image[absCoordX:absCoordX+im_height, absCoordY:absCoordY+im_width]
-        
+        '''
         if(xmax == 1 or ymax == 1):
             pass
         else:
             wrtr.writerow([subImage,class_name+str(z),absCoordX,absCoordY,xmin,ymin,xmax,ymax, cY, cX, convY*cY, convX*cX, lMean, w*convY, h*convX])
             csvfile.flush()
+        '''
+        wrtr.writerow([subImage,class_name+str(z),absCoordX,absCoordY,xmin,ymin,xmax,ymax, cY, cX, convY*cY, convX*cX, lMean, w*convY, h*convX])
+        csvfile.flush()

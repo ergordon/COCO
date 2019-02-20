@@ -40,12 +40,18 @@ def PlotHolesFunc (path):
     Area = []
     HtW = []
     z=0
+    
+    Xmin = 0
+    Xmax = 35
+    Ymin = 4
+    Ymax = 70
+    
     with open(os.path.join(path ,'Channels.csv'), 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                if(float(row["cmcX"]) >= 0 and float(row["cmcX"]) <= 34):
-                    if(float(row["cmcY"]) >= 0 and float(row["cmcY"]) <= 70):
+                if(float(row["cmcX"]) > Xmin and float(row["cmcX"]) < Xmax): # X-Axis
+                    if(float(row["cmcY"]) >= Ymin and float(row["cmcY"]) <= Ymax): # Y-Axis
                         z = z+1
                         AbsoluteX.append(float(row["cmcX"]))
                         AbsoluteY.append(float(row["cmcY"]))
@@ -102,6 +108,7 @@ def PlotHolesFunc (path):
     trafficlight = matplotlib.colors.LinearSegmentedColormap.from_list("", ["red","orange","green"])
     plt.scatter(AbsoluteX, AbsoluteY, s=10, c=Luminance, cmap=trafficlight)
     plt.colorbar()
+    plt.clim(vmin=0, vmax=100)
     plt.xlabel("Channel X-Location [mm]")
     plt.ylabel("Channel Y-Location [mm]") 
     plt.show(block=False)
@@ -122,6 +129,7 @@ def PlotHolesFunc (path):
     plt.colorbar()
     plt.show(block=False)
     plt.show()
+    
     '''
     f4 = plt.figure(4)
     x = AbsoluteX
@@ -129,20 +137,21 @@ def PlotHolesFunc (path):
     z = LuminanceExact
     df = pd.DataFrame({"x" : x, "y" : y, "z":z})
     subDivide = 5
-    binsx = numpy.arange(0,36,subDivide)
-    binsy = numpy.arange(0,72,subDivide)
+    binsx = numpy.arange(Xmin,Xmax+2,subDivide)
+    binsy = numpy.arange(Ymin,Ymax+2,subDivide)
     res = df.groupby([pd.cut(df.y, binsy),pd.cut(df.x,binsx)])['z'].mean().unstack()
     plt.imshow(res, cmap=trafficlight, 
                extent=[binsx.min(), binsx.max(),binsy.min(),binsy.max()],
                origin='lower')
     
     # Loop over data dimensions and create text annotations.
-    for i in range(1,35,subDivide):
-        for j in range(1,70,subDivide):
+    for i in range(1,Xmax,subDivide):
+        for j in range(1,Ymax,subDivide):
             plt.text(i+(subDivide/2.25), j+(subDivide/2.25), str(int(round(res[i][j]))),
                            ha="center", va="center", color="w")
       
     plt.colorbar()
+    plt.clim(vmin=0, vmax=150)
     plt.xticks(binsx)
     plt.yticks(binsy)
     plt.xlabel("Channel X-Location [mm]")

@@ -1,3 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jan 29 12:23:39 2019
+
+@author: EPLab
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 24 11:08:43 2019
+
+@author: EPLab
+"""
+
+# -*- coding: utf-8 -*-
 """
 Created on Fri Dec 28 14:46:00 2018
 
@@ -13,18 +28,16 @@ import sys
 import time
 import imutils
 import csv
-from ChannelInfo2 import ChannelInfoFunc
+from ChannelInfo import ChannelInfoFunc
 
-# User inputs
 filename = input("Enter the test name you would like to detect channels for: \n ")
 print("Must be the same as the tested array length. (Note: Can be fixed later if input was incorrect)")
 ARRlength = input("Enter Array Length [cm] (X-axis): ")
 ARRwidth = input("Enter Array Width [cm] (Y-axis): ")
 
-# Begin Timer
+#Begin Timer
 START_TIME = time.time()
 
-# Get Current Directory
 raw_path = os.getcwd()
 path = raw_path+"/"+str(filename)
 
@@ -56,7 +69,9 @@ try:
     os.mkdir(path + "/Channels/Grey")
     os.mkdir(path + "/Channels/Dark")
 except OSError:  
-    print ("\n")
+    print ("Creation of the directory %s failed" % PATH_TO_OUTPUT)
+else:  
+    print ("Successfully created the directory %s" % PATH_TO_OUTPUT)
     
 # Number of classes the object detector can identify
 NUM_CLASSES = 1
@@ -103,20 +118,20 @@ image = cv2.imread(PATH_TO_IMAGE)
 image = cv2.flip(image, 0) # Perform a verticle flip so that the original image and plots match.
 height, width, channels = image.shape
 
-# Array Width and Height in mm
+## Array Width and Height in mm
 arrayWidth = float(ARRlength)*10
 arrayHeight = float(ARRwidth)*10
 
-# Conversion ration from pixels to mm
 convX = arrayWidth/height
 convY = arrayHeight/width
 
-# Make the subdivisions
+
+print(convX, convY)
+
+## Make the subdivisions
 maxImgWidth = 850
 maxImgHeight = 500
 
-
-# This section determines the size each subimage will be. 
 divideWidth = 2
 divideHeight = 2
 
@@ -143,12 +158,13 @@ with open(os.path.join(path,'Channels.csv'),'w') as csvfile:
 tiles = []
 for x in range(0,height,M):
     for y in range(0,width,N):
+        #tiles.append(image[x:x+M,y:y+N]) 
         tiles.append(1)
         PIC_TIME = time.time()
         
         print('Now processing subImage '+str(len(tiles)))
         
-        tile = image[x:x+M+0,y:y+N+0]
+        tile = image[x:x+M,y:y+N]
         tile_expanded = np.expand_dims(tile, axis=0)
                    
         # Perform the actual detection by running the model with the image as input
@@ -173,7 +189,7 @@ for x in range(0,height,M):
         classes = np.squeeze(classes).astype(np.int32)
         scores = np.squeeze(scores)
         boxes = np.squeeze(boxes)
-        threshold = 0.50  # Set a minimum score threshold of 50%
+        threshold = 0.50  #CWH: set a minimum score threshold of 50%
         obj_above_thresh = sum(n > threshold for n in scores)
         print("Detected %s Channels" % (obj_above_thresh))
         

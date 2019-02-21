@@ -2,17 +2,19 @@
 """
 Created on Tue Jan 22 08:57:10 2019
 
-@author: Emilio Gordon
+@author: EPLab
 """
 # Path A is the path of the test we are running. The newest data collected.
 # Path B is the path of the data we want to compare Path A to. Past data.
-def ComparePlotsFunc (path, pathA, pathB, range):
+def ComparePlotsFunc (path, pathA, pathB):
     import os
     import matplotlib.pyplot as plt
     import csv
     import numpy
     import statistics
     import pandas as pd
+    import seaborn as sns
+    import argparse
     import matplotlib.colors
     
     
@@ -32,7 +34,29 @@ def ComparePlotsFunc (path, pathA, pathB, range):
     A_Height = []
     A_Area = []
     A_HtW = []
-    A_z = 0
+    A_z=0
+    with open(os.path.join(path+pathA+'/','Channels.csv'), 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            try:
+                A_z = A_z+1
+                A_AbsoluteX.append(float(row["cmcX"]))
+                A_AbsoluteY.append(float(row["cmcY"]))
+                if(float(row["luminance"]) >= 90):
+                    A_Luminance.append(100)
+                elif(90 > float(row["luminance"]) >= 45):
+                    A_Luminance.append(50)
+                else:
+                    A_Luminance.append(0)
+                A_LuminanceExact.append(int(round(float(row["luminance"]))))
+                #Luminance.append(int(round(float(row["luminance"]),4)))
+                A_Width.append(float(row["width"]))
+                A_Height.append(float(row["height"]))
+                A_Area.append(float(row["width"])*float(row["height"]))
+                A_HtW.append(float(row["height"])/float(row["width"]))
+            except AttributeError:
+                print("No Entry")
+    
     B_AbsoluteX = []
     B_AbsoluteY = []
     B_Luminance = []
@@ -41,105 +65,28 @@ def ComparePlotsFunc (path, pathA, pathB, range):
     B_Height = []
     B_Area = []
     B_HtW = []
-    B_z = 0
-    
-    if range == True:
-        print("Below, please input the range you would like to view of the plots.")
-        Xmin = int(input(" Xmin: "))
-        Xmax = int(input(" Xmax: "))
-        Ymin = int(input(" Ymin: "))
-        Ymax = int(input(" Ymax: "))
-        
-        with open(os.path.join(path+pathA+'/','Channels.csv'), 'r') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                try:
-                    if(float(row["cmcX"]) > Xmin and float(row["cmcX"]) < Xmax): # X-Axis
-                        if(float(row["cmcY"]) >= Ymin and float(row["cmcY"]) <= Ymax): # Y-Axis
-                            A_z = A_z+1
-                            A_AbsoluteX.append(float(row["cmcX"]))
-                            A_AbsoluteY.append(float(row["cmcY"]))
-                            if(float(row["luminance"]) >= 90):
-                                A_Luminance.append(100)
-                            elif(90 > float(row["luminance"]) >= 45):
-                                A_Luminance.append(50)
-                            else:
-                                A_Luminance.append(0)
-                            A_LuminanceExact.append(int(round(float(row["luminance"]))))
-                            #Luminance.append(int(round(float(row["luminance"]),4)))
-                            A_Width.append(float(row["width"]))
-                            A_Height.append(float(row["height"]))
-                            A_Area.append(float(row["width"])*float(row["height"]))
-                            A_HtW.append(float(row["height"])/float(row["width"]))
-                except AttributeError:
-                    print("No Entry")
-        with open(os.path.join(path+pathB+'/','Channels.csv'), 'r') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                try:
-                    if(float(row["cmcX"]) > Xmin and float(row["cmcX"]) < Xmax): # X-Axis
-                        if(float(row["cmcY"]) >= Ymin and float(row["cmcY"]) <= Ymax): # Y-Axis
-                            B_z = B_z+1
-                            B_AbsoluteX.append(float(row["cmcX"]))
-                            B_AbsoluteY.append(float(row["cmcY"]))
-                            if(float(row["luminance"]) >= 90):
-                                B_Luminance.append(100)
-                            elif(90 > float(row["luminance"]) >= 45):
-                                B_Luminance.append(50)
-                            else:
-                                B_Luminance.append(0)
-                            B_LuminanceExact.append(int(round(float(row["luminance"]))))
-                            #Luminance.append(int(round(float(row["luminance"]),4)))
-                            B_Width.append(float(row["width"]))
-                            B_Height.append(float(row["height"]))
-                            B_Area.append(float(row["width"])*float(row["height"]))
-                            B_HtW.append(float(row["height"])/float(row["width"]))
-                except AttributeError:
-                    print("No Entry")
-        
-    else:
-        with open(os.path.join(path+pathA+'/','Channels.csv'), 'r') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                try:
-                    A_z = A_z+1
-                    A_AbsoluteX.append(float(row["cmcX"]))
-                    A_AbsoluteY.append(float(row["cmcY"]))
-                    if(float(row["luminance"]) >= 90):
-                        A_Luminance.append(100)
-                    elif(90 > float(row["luminance"]) >= 45):
-                        A_Luminance.append(50)
-                    else:
-                        A_Luminance.append(0)
-                    A_LuminanceExact.append(int(round(float(row["luminance"]))))
-                    #Luminance.append(int(round(float(row["luminance"]),4)))
-                    A_Width.append(float(row["width"]))
-                    A_Height.append(float(row["height"]))
-                    A_Area.append(float(row["width"])*float(row["height"]))
-                    A_HtW.append(float(row["height"])/float(row["width"]))
-                except AttributeError:
-                    print("No Entry")
-        with open(os.path.join(path+pathB+'/','Channels.csv'), 'r') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                try:
-                    B_z = B_z+1
-                    B_AbsoluteX.append(float(row["cmcX"]))
-                    B_AbsoluteY.append(float(row["cmcY"]))
-                    if(float(row["luminance"]) >= 90):
-                        B_Luminance.append(100)
-                    elif(90 > float(row["luminance"]) >= 45):
-                        B_Luminance.append(50)
-                    else:
-                        B_Luminance.append(0)
-                    B_LuminanceExact.append(int(round(float(row["luminance"]))))
-                    #Luminance.append(int(round(float(row["luminance"]),4)))
-                    B_Width.append(float(row["width"]))
-                    B_Height.append(float(row["height"]))
-                    B_Area.append(float(row["width"])*float(row["height"]))
-                    B_HtW.append(float(row["height"])/float(row["width"]))
-                except AttributeError:
-                    print("No Entry")
+    B_z=0
+    with open(os.path.join(path+pathB+'/','Channels.csv'), 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            try:
+                B_z = B_z+1
+                B_AbsoluteX.append(float(row["cmcX"]))
+                B_AbsoluteY.append(float(row["cmcY"]))
+                if(float(row["luminance"]) >= 90):
+                    B_Luminance.append(100)
+                elif(90 > float(row["luminance"]) >= 45):
+                    B_Luminance.append(50)
+                else:
+                    B_Luminance.append(0)
+                B_LuminanceExact.append(int(round(float(row["luminance"]))))
+                #Luminance.append(int(round(float(row["luminance"]),4)))
+                B_Width.append(float(row["width"]))
+                B_Height.append(float(row["height"]))
+                B_Area.append(float(row["width"])*float(row["height"]))
+                B_HtW.append(float(row["height"])/float(row["width"]))
+            except AttributeError:
+                print("No Entry")
     
     ###############################################################################
     ## Print Stats

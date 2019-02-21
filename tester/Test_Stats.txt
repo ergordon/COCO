@@ -7,6 +7,6 @@ STDe Height-to-Width:  0.19432462575974033
 Mean Width:  0.08190066143243756
 Mean Height:  0.15729086119926533
 405 Channels Detected 
-266 Light Channels 
-91 Grey Channels 
-48 Dark Channels 
+288 Light Channels 
+99 Grey Channels 
+18 Dark Channels 

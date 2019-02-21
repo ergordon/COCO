@@ -174,30 +174,34 @@ time.sleep(2)   # Wait for CNC to initialize
 s.flushInput()  # Flush startup text in serial input
 print ('\n Sending gcode \n \n')
 
+#zz=[]
 z = 0
 maxZ = (width//yStep)*(length//xStep)
 printProgressBar(z, maxZ, prefix = 'Progress:', suffix = 'Complete', bar_length = 45)
-
 # Stream g-code
 for line in f:
     l = removeComment(line)
     l = l.strip() # Strip all EOL characters for streaming
     if  (l.isspace()==False and len(l)>0) :
+        #print ('Sending: ' + l)
         if(l == "G04 P0.5"):
             TakeImage(z,xxx,yyy,path)
             z=z+1
             printProgressBar(z, maxZ, prefix = 'Progress:', suffix = 'Complete', bar_length = 45)
+            #zz.extend([zz])
     s.write(str.encode(l + '\n')) # Send g-code block
     grbl_out = s.readline() # Wait for response with carriage return
     #print (' : ' + str(grbl_out.strip()))
     
+#c = np.asarray(zz)
+#np.savetxt(os.path.join(path+"/" ,"YIter.csv"), c, delimiter=",")
+ 
 # Wait here until printing is finished to close serial port and file.
 print("\n \n Use Microsoft Image Composite Editor to create a stitched image.\n"+\
       " Name the stitched image Stitched.jpg and place it into the project folder"+\
       " created at the starte of running COCO")
 
 time.sleep(10) # Time in seconds.
-
 # Close file and serial port
 f.close()
 s.close()
